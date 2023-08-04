@@ -30,7 +30,5 @@ As a user, I want the ability to...
 - if time has run out, see "Oh no, you've lost!"
 
  
-![IMG_5294](https://github.com/dn412/Concentration-Game/assets/140428179/efa85ed1-0a71-4b62-87ab-3f427808bc3e)
 
-  
 
