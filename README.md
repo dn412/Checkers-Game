@@ -31,4 +31,4 @@ As a user, I want the ability to...
 
  
 ![screenshot](img/screenshot.jpg)
-
+<img src = "img/screenshot.jpg"/>
