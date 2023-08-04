@@ -3,7 +3,7 @@
 Overview:
 Concentration is a popular card game that requires memory, observation and like the name itself, concentration. Versions of this game dates back to the 16th century in Japan. The mechanics of the game consists of a deck of paired cards, which are then laid out facing down in a grid-like pattern. The player flips the cards over in the hopes to match pairs before the timer runs out. The goal of the game is to remember what the card is and where it's located. The game is won by matching all pairs.
 
-![image](https://github.com/dn412/Concentration-Game/assets/140428179/ef3b1bbc-4d3b-4ddb-8a74-29cb8f5de6a7)
+
 
 Technologies used:
 - HTML
@@ -28,6 +28,8 @@ As a user, I want the ability to...
 - if all pairs matched, see "Congratulations, Winner!"
 - if time has run out, see "Oh no, you've lost!"
 
+ 
+![IMG_5294](https://github.com/dn412/Concentration-Game/assets/140428179/efa85ed1-0a71-4b62-87ab-3f427808bc3e)
+
   
-  ![IMG_5294](https://github.com/dn412/Concentration-Game/assets/140428179/6d9559e3-4e32-47d9-8fa8-2f7d6bb556f4)
 
