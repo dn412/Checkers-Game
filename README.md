@@ -30,5 +30,5 @@ As a user, I want the ability to...
 - if time has run out, see "Oh no, you've lost!"
 
  
-
+![screenshot](img/screenshot.jpg)
 
