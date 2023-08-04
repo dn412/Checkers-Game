@@ -8,3 +8,23 @@ Technologies used:
 - HTML
 - CSS
 - Javascript
+
+
+User Stories:
+As a user, I want the ability to...
+- begin the game by pressing start button
+- watch the countdown begin
+- make the selection of first card
+- flip first card face-upward
+- make the selection of second card
+- flip second card face-upward
+- if matched, leave the pair facing upwards
+- if not matched, face both cards downwards
+- keep track of how many pairs i've matched
+- keep track of the time I have left
+- visually see how many wins
+- visually see how many losses
+- if all pairs matched, see "Congratulations, Winner!"
+- if time has run out, see "Oh no, you've lost!"
+  
+  
