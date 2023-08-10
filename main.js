@@ -1,111 +1,152 @@
-const cardsContent = ['♈︎', '♈︎', '♉︎', '♉︎', '♊︎', '♊︎', '♋︎', '♋︎', '♌︎', '♌︎', '♍︎', '♍︎', '♎︎', '♎︎', '♏︎', '♏︎', '♐︎', '♐︎', '♑︎', '♑︎', '♒︎', '♒︎', '♓︎', '♓︎'];
+
+let beginBtn = document.getElementById('begin')
+let resetBtn = document.querySelector('.restart')
+const gridContainer = document.querySelector('.grid-container')
+
 let cards = [];
-let flippedCards = [];
-let canFlip = false;
-let timer;
-let timeLeft = 60;
+let firstCard, secondCard;
+let lockBoard = false;
+let match = 0;
+
+document.querySelectorAll('.match').textContent = match;
 
 
-function createCard(content) {
-    const card = document.createElement('div');
-    card.classList.add('card', 'face-down');
-    card.textContent = content;
-    card.addEventListener('click', () => flipCard(card));
-    return card;
-}
+// fetch data
+fetch('./data/cards.json')
+.then((res)=> res.json())
+.then((data)=>{
+    cards = [...data, ...data];
+
+   shuffleCards()
+    generateCards()
+})
 
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+beginBtn.addEventListener('click', initialize);
+
+
+// shuffleCards
+function shuffleCards() {
+    let currentIndex = cards.length,
+      randomIndex,
+      temporaryValue;
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = cards[currentIndex];
+      cards[currentIndex] = cards[randomIndex];
+      cards[randomIndex] = temporaryValue;
+    }
+  }
+function generateCards(){
+    for (let card of cards){
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card')
+        cardElement.setAttribute('data-name', card.name);
+        cardElement.innerHTML = `
+        <div class='front'>
+        <img class='front-image' src=${card.image} />
+        </div>
+        <div class="back'></div>
+        `
+    gridContainer.appendChild(cardElement);
+    cardElement.addEventListener('click', flipCard)
+
     }
 }
 
-
-function initializeGame() {
-    cards = [];
-    flippedCards = [];
-    canFlip = false;
-    const gameBoard = document.querySelector('.game-board');
-    gameBoard.innerHTML = '';
-
-    shuffle(cardsContent);
-
-    for (const content of cardsContent) {
-        const card = createCard(content);
-        cards.push(card);
+    // timer starter
+    function startTimer() {
+        const timerDisplay = document.querySelector('#Timer');
+        timerDisplay.classList.add('timer');
+        let timeLeft = 100
+        timer = setInterval(() => {
+            timeLeft--;
+            if (timeLeft >= 0) {
+                timerDisplay.textContent = `Timer: ${timeLeft} secs`;
+            } else {
+                clearInterval(timer);
+                endGame();
+                
+            }
+        }, 1000);
     }
 
-    cards.forEach(card => gameBoard.appendChild(card));
-}
-
-function startGame() {
-    // Reset timer and timeLeft
-    clearInterval(timer);
-    timeLeft = 60;
-
-    // Hide the start button, reset cards, and start the game
-    const startButton = document.getElementById('start-button');
-    startButton.style.display = 'none';
-    canFlip = true;
-    initializeGame();
-    startTimer();
-}
-
-function startTimer() {
-    const timerDisplay = document.querySelector('div');
-    timerDisplay.classList.add('timer');
-    document.body.appendChild(timerDisplay);
-
-    timer = setInterval(() => {
-        timeLeft--;
-        if (timeLeft >= 0) {
-            timerDisplay.textContent = `Timer &#9201: ${timer} secs`;
-        } else {
-            clearInterval(timer);
-            endGame();
-        }
-    }, 1000);
-}
-
-function endGame() {
-    clearInterval(timer);
-    canFlip = false;
-    setTimeout(() => {
-        alert('Time is up! Game Over!');
-    }, 100);
-}
-
-function flipCard(card) {
-    if (!canFlip || card.classList.contains('face-up') || flippedCards.length >= 2) return;
-
-    card.classList.remove('face-down');
-    card.classList.add('face-up');
-    flippedCards.push(card);
-
-    if (flippedCards.length === 2) {
-        canFlip = false;
-        setTimeout(() => checkMatch(), 1000);
-    }
-}
-
-function checkMatch() {
-    const [card1, card2] = flippedCards;
-    if (card1.textContent === card2.textContent) {
-        card1.classList.remove('face-up');
-        card2.classList.remove('face-up');
-        card1.removeEventListener('click', () => flipCard(card1));
-        card2.removeEventListener('click', () => flipCard(card2));
-    } else {
-        card1.classList.add('face-down');
-        card1.classList.remove('face-up');
-        card2.classList.add('face-down');
-        card2.classList.remove('face-up');
+    function endGame() {
+        clearInterval(timer);
+        lockBoard = false;
+        setTimeout(() => {
+            alert('Time is up! Game Over!');
+            restart()
+        }, 100);
+        
     }
 
-    flippedCards = [];
-    canFlip = true;
+// function initialize(){
+
+startTimer()
+
+
+
+function flipCard() {
+    if (lockBoard) return;
+    if (this === firstCard) return;
+  
+    this.classList.add("flipped");
+  
+    if (!firstCard) {
+      firstCard = this;
+      return;
+    }
+  
+    secondCard = this;
+    lockBoard = true;
+  
+    checkForMatch();
+  }
+
+
+function checkForMatch(){
+    let isMatch = firstCard.dataset.name === secondCard.dataset.name;
+    isMatch ? disableCards() : unflipCards();
+    isMatch ? match++ : match == 0;
+    document.querySelector(".match").textContent = match;
 }
 
-initializeGame();
+function disableCards(){
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+
+    resetBoard()
+}
+
+function unflipCards(){
+    setTimeout(()=>{
+        firstCard.classList.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard()
+    }, 1000)
+}
+// }
+
+
+
+function resetBoard(){
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false
+}
+
+function restart(){
+resetBoard()
+shuffleCards();
+match: 0
+document.querySelector('.match').textContent = match;
+gridContainer.innerHTML = "";
+generateCards();
+
+
+
+}
+
+resetBtn.addEventListener('click', restart)

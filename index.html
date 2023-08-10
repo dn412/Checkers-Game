@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Concentration</title>
-  <link rel="stylesheet" href="css/main.css">
-  <script defer src="js/main.js"></script>
+  <title>Memory Game</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  
 </head>
 <body>
 <body class="flex-ctr">
@@ -15,36 +15,20 @@
     <h2>Memory in the Cosmos🔮☪</h2>
     <h2>Find the zodiac pairs before the timer runs out.
     </h2>
-    <h3>.</h3>
-    <div class="timer">Timer &#9201:60 secs</div>
-    <div class="squares">
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
-      <div class="sq"></div>
+   
+    <div id="timer">
+      <div id="Timer">
+        Timer:&#9201;:100 secs
+      </div>
+    <div class="grid-container"></div>
+    <p>Matches: <span class="match"></span></p>
     </div>
-    
-  <button>Let's Begin💫</button>
-    <button 
+    <div class="actions">
+    <button id="begin">Let's Begin💫</button>
+    <button class="restart">Restart</button>
+  </div>
+<script defer src="main.js"></script>   
+ 
+  
 </body>
 </html>
