@@ -6,7 +6,7 @@ body {
   background: url("https://i.imgur.com/dUt5qaf.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -38,6 +38,7 @@ button {
   text-align: center;
   margin: auto;
   display: flex;
+  cursor: pointer
 }
 
 
@@ -82,34 +83,38 @@ p {
 }
 
 .actions button {
-  padding: 8px 16px;
-  font-size: 30px;
+  padding: 5px 16px;
+  font-size: 22px;
   border-radius: 10px;
-  background-color: #27ae60;
-  color: white;
+  background-color: #CCCCFF;
+  color: black;
+  cursor: pointer
 }
 
 .grid-container {
 display: grid;
 justify-content: center;
 grid-gap: 16px;
-grid-template-columns: repeat(6, 140px);
-grid-template-rows: repeat(2, calc(140px / 2 * 3));
+grid-template-columns: repeat(8, 100px);
+grid-template-rows: repeat(3, calc(100px / 2 * 3));
 }
 
 .card {
-height: calc(140px / 2 * 3);
-width: 140px;
+height: calc(100px / 2 * 3);
+width: 100px;
 border-radius: 10px;
 background-color: white;
 position: relative;
+border: 6px solid white;
+border-radius: 12%;
 transform-style: preserve-3d;
 transition: all 0.5s ease-in-out;
+cursor: pointer
 }
 
 .front-image {
-width: 120px;
-height: 200px;
+width: 90px;
+height: 140px;
 }
 
 .card.flipped {
@@ -133,7 +138,7 @@ align-items: center;
 }
 
 .card .back {
-background-image: url("./images/backcard.jpeg");
+background-image: url("./images/backcard.jpg");
 background-position: center center;
 background-size: cover;
 backface-visibility: hidden;
