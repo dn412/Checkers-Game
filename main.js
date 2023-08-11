@@ -11,13 +11,14 @@ console.log(cards);
 let youWin = false;
 
 
+
 function initialize(){
     startTimer();
     shuffleCards();
     generateCards();
 
 
-// shuffleCards
+
 function shuffleCards() {
     let currentIndex = cards.length,
         randomIndex,
@@ -30,6 +31,8 @@ function shuffleCards() {
         cards[randomIndex] = temporaryValue;
     }
 }
+
+
 
 function generateCards() {
     gridContainer.innerHTML = "";
@@ -49,7 +52,8 @@ function generateCards() {
     }
 }
 
-// time starter
+
+
 function startTimer() {
     const timerDisplay = document.querySelector("#Timer");
     timerDisplay.classList.add("timer");
@@ -65,19 +69,23 @@ function startTimer() {
     }, 1000);
 }
 
+
+
 function endGame() {
     lockBoard = false;
 
     if (youWin == false) {
         setTimeout(() => {
-            message.textContent = "Time is up! You lose!";
+            message.textContent = "🛑 Time is Up❗️ Game Over❗️ 🛑";
             restart();
         }, 100);
     } else {
-        message.textContent = "Congratulations!!👏 You have won with 12 matches";
+        message.textContent = "🎉 Winner❕ 🏆";
        timeLeft = 0
     }
 }
+
+
 
 function flipCard() {
     if (timeLeft < 150) {
@@ -98,6 +106,8 @@ function flipCard() {
     checkForMatch();
 }
 
+
+
 function checkForMatch() {
     let isMatch = firstCard.dataset.name === secondCard.dataset.name;
     isMatch ? disableCards() : unflipCards();
@@ -109,6 +119,8 @@ function checkForMatch() {
     }
 }
 
+
+
 function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
@@ -116,19 +128,25 @@ function disableCards() {
     resetBoard();
 }
 
+
+
 function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetBoard();
     }, 1000);
-} // }
+} 
+
+
 
 function resetBoard() {
     firstCard = null;
     secondCard = null;
     lockBoard = false;
 }
+
+
 
 function restart() {
     resetBoard();
@@ -144,10 +162,10 @@ function restart() {
    message.textContent = "";
 }
 
+
+
 resetBtn.addEventListener("click", restart);
 }
-// window.addEventListener("DOMContentLoaded", () => {
-   
-// });
+
 
 beginBtn.addEventListener("click", initialize);

@@ -2,24 +2,27 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   background: url("https://i.imgur.com/dUt5qaf.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  /* height: 100vh; */
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;           
+  justify-content: center;
   align-items: center;
   font-family: 'Yeseva One', serif;
 }
 
 
-header{
+
+header {
   color: slateblue;
   font-size: 8vmin;
 }
+
 
 
 h2 {
@@ -28,6 +31,8 @@ h2 {
   margin: 0;
   text-align: center;
 }
+
+
 
 button {
   margin-top: 5vmin;
@@ -42,22 +47,29 @@ button {
   pointer-events: auto
 }
 
-#timer-message{
+
+
+#timer-message {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px
 }
 
+
+
 button:disabled {
   background-color: white;
   color: #CCCCFF;
 }
 
+
+
 button:hover:not(:disabled) {
   background-color: #CCE5FF;
   color: #CCCCFF;
 }
+
 
 
 #timer {
@@ -72,11 +84,15 @@ button:hover:not(:disabled) {
   flex-direction: column
 }
 
+
+
 h1 {
   text-align: center;
   font-weight: 700;
   font-size: 50px;
 }
+
+
 
 p {
   text-align: center;
@@ -84,10 +100,14 @@ p {
   font-weight: bold;
 }
 
+
+
 .actions {
   display: flex;
   justify-content: center;
 }
+
+
 
 .actions button {
   padding: 5px 16px;
@@ -99,37 +119,48 @@ p {
   pointer-events: auto
 }
 
+
+
 .grid-container {
-display: grid;
-justify-content: center;
-grid-gap: 16px;
-grid-template-columns: repeat(8, 100px);
-grid-template-rows: repeat(3, calc(100px / 2 * 3));
+  display: grid;
+  justify-content: center;
+  grid-gap: 16px;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: repeat(3, calc(100px / 2 * 3));
 }
+
+
 
 .card {
-height: calc(100px / 2 * 3);
-width: 100px;
-border-radius: 10px;
-background-color: white;
-position: relative;
-border: 6px solid white;
-border-radius: 12%;
-transform-style: preserve-3d;
-transition: all 0.5s ease-in-out;
-cursor: pointer;
+  height: calc(100px / 2 * 3);
+  width: 100px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  border: 6px solid white;
+  border-radius: 12%;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
+
+
 
 .front-image {
-width: 90px;
-height: 140px;
+  width: 90px;
+  height: 140px;
 }
+
+
 
 .card.flipped {
-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.front, .back {
+
+
+.front,
+.back {
   backface-visibility: hidden;
   position: absolute;
   border-radius: 10px;
@@ -139,35 +170,40 @@ transform: rotateY(180deg);
   width: 100%;
 }
 
+
+
 .card .front {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+
 
 .card .back {
-background-image: url("./images/backcard.jpg");
-background-position: center center;
-background-size: cover;
-backface-visibility: hidden;
+  background-image: url("./images/backcard.jpg");
+  background-position: center center;
+  background-size: cover;
+  backface-visibility: hidden;
 }
+
 
 
 .card .front {
-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-/* .card .disabled{
-  pointer-events: none;
-  opacity: 0.9
-} */
-#message{
-  color: red;
-  font-size: 20px;
-  /* border: 1px solid #CCCCFF; */
-  padding:6px 10px;
-  
+
+
+#message {
+  color: lightyellow;
+  font-size: 40px;
+  padding: 6px 10px;
+
 }
-#restart{
+
+
+
+#restart {
   display: none
 }
