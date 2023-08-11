@@ -38,9 +38,16 @@ button {
   text-align: center;
   margin: auto;
   display: flex;
-  cursor: pointer
+  cursor: pointer;
+  pointer-events: auto
 }
 
+#timer-message{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px
+}
 
 button:disabled {
   background-color: white;
@@ -88,7 +95,8 @@ p {
   border-radius: 10px;
   background-color: #CCCCFF;
   color: black;
-  cursor: pointer
+  cursor: pointer;
+  pointer-events: auto
 }
 
 .grid-container {
@@ -109,7 +117,7 @@ border: 6px solid white;
 border-radius: 12%;
 transform-style: preserve-3d;
 transition: all 0.5s ease-in-out;
-cursor: pointer
+cursor: pointer;
 }
 
 .front-image {
@@ -144,11 +152,22 @@ background-size: cover;
 backface-visibility: hidden;
 }
 
+
 .card .front {
 transform: rotateY(180deg);
 }
 
-.card .disabled{
+/* .card .disabled{
   pointer-events: none;
   opacity: 0.9
+} */
+#message{
+  color: red;
+  font-size: 20px;
+  /* border: 1px solid #CCCCFF; */
+  padding:6px 10px;
+  
+}
+#restart{
+  display: none
 }
