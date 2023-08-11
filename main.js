@@ -11,13 +11,14 @@ console.log(cards);
 let youWin = false;
 
 
+
 function initialize(){
     startTimer();
     shuffleCards();
     generateCards();
 
 
-// shuffleCards
+
 function shuffleCards() {
     let currentIndex = cards.length,
         randomIndex,
@@ -31,7 +32,8 @@ function shuffleCards() {
     }
 }
 
-// generate cards
+
+
 function generateCards() {
     gridContainer.innerHTML = "";
     for (let card of cards) { 
@@ -50,7 +52,8 @@ function generateCards() {
     }
 }
 
-// time starter
+
+
 function startTimer() {
     const timerDisplay = document.querySelector("#Timer");
     timerDisplay.classList.add("timer");
@@ -66,6 +69,8 @@ function startTimer() {
     }, 1000);
 }
 
+
+
 function endGame() {
     lockBoard = false;
 
@@ -79,6 +84,8 @@ function endGame() {
        timeLeft = 0
     }
 }
+
+
 
 function flipCard() {
     if (timeLeft < 150) {
@@ -99,6 +106,8 @@ function flipCard() {
     checkForMatch();
 }
 
+
+
 function checkForMatch() {
     let isMatch = firstCard.dataset.name === secondCard.dataset.name;
     isMatch ? disableCards() : unflipCards();
@@ -110,6 +119,8 @@ function checkForMatch() {
     }
 }
 
+
+
 function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
@@ -117,19 +128,25 @@ function disableCards() {
     resetBoard();
 }
 
+
+
 function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         resetBoard();
     }, 1000);
-} // }
+} 
+
+
 
 function resetBoard() {
     firstCard = null;
     secondCard = null;
     lockBoard = false;
 }
+
+
 
 function restart() {
     resetBoard();
@@ -142,13 +159,13 @@ function restart() {
     setTimeout(() => {
         startTimer();
     }, 200);
-//    message.textContent = "";
 }
+
+
 
 resetBtn.addEventListener("click", restart);
 }
-// window.addEventListener("DOMContentLoaded", () => {
-   
-// });
+
+
 
 beginBtn.addEventListener("click", initialize);
