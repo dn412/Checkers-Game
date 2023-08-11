@@ -31,6 +31,7 @@ function shuffleCards() {
     }
 }
 
+// generate cards
 function generateCards() {
     gridContainer.innerHTML = "";
     for (let card of cards) { 
@@ -70,11 +71,11 @@ function endGame() {
 
     if (youWin == false) {
         setTimeout(() => {
-            message.textContent = "Time is up! You lose!";
+            message.textContent = "🛑Time is up❗️ Game Over❗️ 🛑";
             restart();
         }, 100);
     } else {
-        message.textContent = "Congratulations!!👏 You have won with 12 matches";
+        message.textContent = "🎉Winner❕🏆";
        timeLeft = 0
     }
 }
@@ -141,7 +142,7 @@ function restart() {
     setTimeout(() => {
         startTimer();
     }, 200);
-   message.textContent = "";
+//    message.textContent = "";
 }
 
 resetBtn.addEventListener("click", restart);

@@ -158,8 +158,8 @@ transform: rotateY(180deg);
 
 
 #message{
-  color: red;
-  font-size: 20px;
+  color: lightyellow;
+  font-size: 40px;
   padding:6px 10px;
   
 }
