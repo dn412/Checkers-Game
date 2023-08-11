@@ -159,7 +159,7 @@ function restart() {
     setTimeout(() => {
         startTimer();
     }, 200);
-   message.textContent = "";
+
 }
 
 
